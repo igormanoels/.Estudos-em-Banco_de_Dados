@@ -4,7 +4,7 @@ CREATE DATABASE cantina; -- Cria o bando de dados da Cantina
 USE cantina;			 -- Faz com que ele entre em uso
 
 ----------------------------------------------------------------------------
-CREATE TABLE Cliente (
+CREATE TABLE cliente (
 	id_cliente INT IDENTITY PRIMARY KEY,
     nome_cliente VARCHAR (150) NOT NULL,
     cpf VARCHAR (11) NOT NULL,
@@ -79,6 +79,6 @@ CREATE TABLE pagamento (
 ); -- Criando tabela de Pagamento
 
 
-DROP TABLE cliente;
-SELECT* FROM dbo.pagamento;
+DROP TABLE Cliente;
+SELECT* FROM dbo.cliente;
 
