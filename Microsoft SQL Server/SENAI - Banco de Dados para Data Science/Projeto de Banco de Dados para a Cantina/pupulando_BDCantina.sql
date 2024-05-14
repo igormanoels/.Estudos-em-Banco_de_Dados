@@ -40,11 +40,14 @@ VALUES
 INSERT INTO atendente (id_restaurante, nome_atendente, num_registro)
 VALUES 
     (1, 'Ana Silva', '128'),
-    (1, 'Pedro Santos', '245'),
-    (1, 'Maria Oliveira', '393');
+    (2, 'Pedro Santos', '245'),
+    (3, 'Maria Oliveira', '393');
 
 
 -- Dados para a tabela de Refeição
+INSERT INTO refeicao (id_atendente, categoria)
+VALUES
+	(1, café); 
 
 
 

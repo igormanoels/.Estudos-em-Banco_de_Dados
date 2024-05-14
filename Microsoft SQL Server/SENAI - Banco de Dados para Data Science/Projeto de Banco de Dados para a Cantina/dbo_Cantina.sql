@@ -100,7 +100,7 @@ CREATE INDEX idx_id_cliente_pagamento ON pagamento(id_cliente);
 
 ----------------------------------------------------------------------------
 -- Comando para seleção de Tabelas do Banco de Dados
-SELECT* FROM dbo.consumo; -- Comando para selecionar uma tabela inteira
+SELECT* FROM dbo.contato; -- Comando para selecionar uma tabela inteira
 
 SELECT cliente.nome_cliente, cliente.cpf, contato.telefone, refeicao.tipo_categoria, consumo.preco, pagamento.quantTotal, pagamento.pgmtTotal
 FROM cliente 
