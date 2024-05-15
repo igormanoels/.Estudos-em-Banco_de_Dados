@@ -1,7 +1,7 @@
 use cantina;
 ----------------------------------------------------------------------------
 -- Dados para a tabela de Cliente
-INSERT INTO cliente (nome_cliente, cpf, genero, data_nascimento, naturalidade, nacionalidade) 
+INSERT INTO cliente (nomeCliente, cpf, genero, dataNascimento, naturalidade, nacionalidade) 
 VALUES
     ('João da Silva', '12345678901', 'Masculino', '1990-05-15', 'São Paulo', 'Brasileiro'),
     ('Maria Oliveira', '98765432109', 'Feminino', '1985-08-20', 'Rio de Janeiro', 'Brasileiro'),
@@ -15,8 +15,9 @@ VALUES
     ('Élise Dubois', '67890123456', 'Feminino', '1984-06-17', 'Paris', 'Francês');
 
 
+----------------------------------------------------------------------------
 -- Dados para a tabela de Contato
-INSERT INTO contato (id_cliente, telefone, email, sala)
+INSERT INTO contato (idCliente, telefone, email, sala)
 VALUES 
     (1, '(11) 98765-4321', 'joao.silva@example.com', '41'),
     (2, '(21) 12345-6789', 'maria.oliveira@example.com', '42'),
@@ -30,33 +31,185 @@ VALUES
     (10, '(33) 9999-9999', 'elise.dubois@example.com', '50');
 
 
--- Dados para a tabela de Restaurante
-INSERT INTO restaurante (id_cliente)
-VALUES 
-    (1), (2), (3), (4), (5), (6), (7), (8), (9), (10);
-
-
+----------------------------------------------------------------------------
 -- Dados para a tabela de Atendente
-INSERT INTO atendente (id_restaurante, nome_atendente, num_registro)
+INSERT INTO atendente (nomeAtendente, numRegistro)
 VALUES 
-    (1, 'Ana Silva', '128'),
-    (2, 'Pedro Santos', '245'),
-    (3, 'Maria Oliveira', '393');
+    ('Marcos Silva', '001'),
+    ('Carla Oliveira', '002'),
+    ('Renato Santos', '003');
 
 
+----------------------------------------------------------------------------
 -- Dados para a tabela de Refeição
-INSERT INTO refeicao (id_atendente, categoria)
-VALUES
-	(1, café); 
+INSERT INTO refeicao (idCliente, idAtendente, categoria, descricao)
+VALUES 
+    (1, 1, 'Café', 'Café da manhã simples'),
+    (2, 2, 'Café', 'Café americano com croissant'),
+    (3, 3, 'Café', 'Pão de queijo com café com leite'),
+    (4, 1, 'Café', 'Tapioca com café preto'),
+    (5, 2, 'Café', 'Misto quente com suco de laranja'),
+    (6, 1, 'Almoço', 'Prato do dia'),
+    (7, 2, 'Almoço', 'Prato executivo'),
+    (8, 3, 'Almoço', 'Self-service'),
+    (9, 1, 'Almoço', 'Self-service'),
+    (10, 2, 'Almoço', 'Prato do dia'),
+    (1, 3, 'Jantar', 'Prato do dia'),
+    (2, 1, 'Jantar', 'Prato executivo'),
+    (3, 2, 'Jantar', 'Self-service'),
+    (4, 3, 'Jantar', 'Self-service'),
+    (5, 1, 'Jantar', 'Prato do dia'),
+	(1, 1, 'Café', 'Café da manhã simples'),
+    (2, 2, 'Café', 'Café americano com croissant'),
+    (3, 3, 'Café', 'Pão de queijo com café com leite'),
+    (4, 1, 'Café', 'Tapioca com café preto'),
+    (5, 2, 'Café', 'Misto quente com suco de laranja'),
+    (6, 1, 'Almoço', 'Prato do dia'),
+    (7, 2, 'Almoço', 'Prato executivo'),
+    (8, 3, 'Almoço', 'Self-service'),
+    (9, 1, 'Almoço', 'Self-service'),
+    (10, 2, 'Almoço', 'Prato do dia'),
+    (1, 3, 'Jantar', 'Prato do dia'),
+    (2, 1, 'Jantar', 'Prato executivo'),
+    (3, 2, 'Jantar', 'Self-service'),
+    (4, 3, 'Jantar', 'Self-service'),
+    (5, 1, 'Jantar', 'Prato do dia'),
+    (6, 1, 'Café', 'Café da manhã simples com suco de frutas'),
+    (7, 2, 'Café', 'Café com pão de queijo e bolo de milho'),
+    (8, 3, 'Café', 'Café com croissant e geléia de morango'),
+    (1, 1, 'Almoço', 'Self-service com variedade de saladas'),
+    (2, 2, 'Almoço', 'Prato executivo de filé de frango grelhado'),
+    (3, 3, 'Almoço', 'Self-service com opção vegetariana'),
+    (6, 1, 'Jantar', 'Prato do dia com risoto de cogumelos'),
+    (7, 2, 'Jantar', 'Prato executivo de salmão ao molho de maracujá'),
+    (8, 3, 'Jantar', 'Self-service com churrasco de picanha'),
+	(9, 1, 'Café', 'Café da manhã com pão integral e frutas frescas'),
+    (10, 2, 'Café', 'Café com waffle e suco natural'),
+    (1, 3, 'Café', 'Café com panquecas e ovos mexidos'),
+    (2, 1, 'Café', 'Café com sanduíche de presunto e queijo'),
+    (3, 2, 'Café', 'Café com croissant e geleia de framboesa'),
+    (4, 3, 'Almoço', 'Self-service com variedade de pratos quentes'),
+    (5, 1, 'Almoço', 'Prato executivo de peixe grelhado com legumes'),
+    (6, 2, 'Almoço', 'Self-service com opção vegana'),
+    (7, 3, 'Almoço', 'Prato do dia com estrogonofe de carne'),
+    (8, 1, 'Almoço', 'Self-service com saladas frescas'),
+    (9, 2, 'Jantar', 'Prato executivo de frango ao curry'),
+    (10, 3, 'Jantar', 'Self-service com churrasco de carne e frango'),
+    (1, 1, 'Jantar', 'Prato do dia com risoto de camarão'),
+    (2, 2, 'Jantar', 'Prato executivo de filé mignon com molho de vinho tinto'),
+    (3, 3, 'Jantar', 'Self-service com opção vegetariana'),
+    (4, 1, 'Almoço', 'Self-service com variedade de pratos quentes'),
+    (5, 2, 'Almoço', 'Prato executivo de peixe grelhado com legumes'),
+    (6, 3, 'Almoço', 'Self-service com opção vegana'),
+    (7, 1, 'Almoço', 'Prato do dia com estrogonofe de carne'),
+    (8, 2, 'Almoço', 'Self-service com saladas frescas'),
+    (9, 3, 'Jantar', 'Prato executivo de frango ao curry'),
+    (10, 1, 'Jantar', 'Self-service com churrasco de carne e frango'),
+    (1, 2, 'Jantar', 'Prato do dia com risoto de camarão'),
+    (2, 3, 'Jantar', 'Prato executivo de filé mignon com molho de vinho tinto'),
+    (3, 1, 'Jantar', 'Self-service com opção vegetariana'),
+    (4, 2, 'Café', 'Café com pão de queijo e suco de laranja'),
+    (5, 3, 'Café', 'Café com bolo de chocolate e café expresso'),
+    (6, 1, 'Café', 'Café com cuscuz e queijo coalho'),
+    (7, 2, 'Café', 'Café com tapioca e suco de abacaxi'),
+    (8, 3, 'Café', 'Café com bolo de milho e chá de camomila'),
+    (9, 1, 'Almoço', 'Self-service com variedade de pratos regionais'),
+    (10, 2, 'Almoço', 'Prato executivo de filé de tilápia com arroz integral'),
+    (1, 3, 'Almoço', 'Self-service com opção vegana'),
+    (2, 1, 'Almoço', 'Prato do dia com estrogonofe de frango'),
+    (3, 2, 'Almoço', 'Self-service com saladas frescas'),
+    (4, 3, 'Jantar', 'Prato executivo de salmão ao molho de maracujá'),
+    (5, 1, 'Jantar', 'Self-service com churrasco de picanha e frango'),
+    (6, 2, 'Jantar', 'Prato do dia com risoto de camarão'),
+    (7, 3, 'Jantar', 'Prato executivo de filé mignon ao molho de vinho tinto'),
+    (8, 1, 'Jantar', 'Self-service com opção vegetariana'),
+    (9, 2, 'Almoço', 'Self-service com variedade de pratos regionais'),
+    (10, 3, 'Almoço', 'Prato executivo de filé de tilápia com arroz integral'),
+    (1, 1, 'Almoço', 'Self-service com opção vegana'),
+    (2, 2, 'Almoço', 'Prato do dia com estrogonofe de frango'),
+    (3, 3, 'Almoço', 'Self-service com saladas frescas'),
+    (4, 1, 'Jantar', 'Prato executivo de salmão ao molho de maracujá'),
+    (5, 2, 'Jantar', 'Self-service com churrasco de picanha e frango'),
+    (6, 3, 'Jantar', 'Prato do dia com risoto de camarão'),
+    (7, 1, 'Jantar', 'Prato executivo de filé mignon ao molho de vinho tinto'),
+    (8, 2, 'Jantar', 'Self-service com opção vegetariana');
 
 
-
-
-
-
-SELECT* FROM restaurante;
-SELECT* FROM atendente;
-
-
-
-
+----------------------------------------------------------------------------
+-- Dados para a tabela de Pagamento
+INSERT INTO pagamento (idRefeicao, idCliente, preco, dataConsumo)
+VALUES 
+    (1, 1, 17.00, '2024-05-14T19:00:00'),
+    (2, 2, 22.01, '2024-05-14T19:30:00'),
+    (3, 3, 26.00, '2024-05-14T20:00:00'),
+    (4, 4, 24.57, '2024-05-14T20:30:00'),
+    (5, 5, 19.12, '2024-05-14T21:00:00'),
+    (6, 6, 20.00, '2024-05-14T12:00:00'),
+    (7, 7, 25.90, '2024-05-14T12:30:00'),
+    (8, 8, 30.00, '2024-05-14T13:00:00'),
+    (9, 9, 28.90, '2024-05-14T13:30:00'),
+    (10, 10, 22.50, '2024-05-14T14:00:00'),
+    (1, 1, 17.00, '2024-05-14T19:00:00'),
+    (2, 2, 22.01, '2024-05-14T19:30:00'),
+    (3, 3, 26.00, '2024-05-14T20:00:00'),
+    (4, 4, 24.57, '2024-05-14T20:30:00'),
+    (5, 5, 19.12, '2024-05-14T21:00:00'),
+    (6, 6, 20.00, '2024-05-15T12:00:00'),
+    (7, 7, 25.90, '2024-05-15T12:30:00'),
+    (8, 8, 30.00, '2024-05-15T13:00:00'),
+    (9, 9, 28.90, '2024-05-15T13:30:00'),
+    (10, 10, 22.50, '2024-05-15T14:00:00'),
+    (1, 1, 17.50, '2024-05-15T19:30:00'),
+    (2, 2, 22.60, '2024-05-15T20:00:00'),
+    (3, 3, 26.50, '2024-05-15T20:30:00'),
+    (4, 4, 24.67, '2024-05-15T21:00:00'),
+    (5, 5, 19.21, '2024-05-15T21:30:00'),
+    (6, 6, 18.00, '2024-05-16T12:00:00'),
+    (7, 7, 23.50, '2024-05-16T12:30:00'),
+    (8, 8, 27.80, '2024-05-16T13:00:00'),
+    (9, 1, 29.90, '2024-05-16T19:30:00'),
+    (10, 2, 35.00, '2024-05-16T20:00:00'),
+    (11, 3, 33.25, '2024-05-16T20:30:00'),
+    (6, 6, 21.50, '2024-05-16T19:00:00'),
+    (7, 7, 27.75, '2024-05-16T19:30:00'),
+    (8, 8, 31.80, '2024-05-16T20:00:00'),
+    (12, 9, 19.00, '2024-05-17T07:30:00'),
+    (13, 10, 24.50, '2024-05-17T08:00:00'),
+    (14, 1, 28.80, '2024-05-17T08:30:00'),
+    (15, 2, 27.67, '2024-05-17T09:00:00'),
+    (16, 3, 21.21, '2024-05-17T09:30:00'),
+    (17, 4, 26.00, '2024-05-17T12:00:00'),
+    (18, 5, 32.50, '2024-05-17T12:30:00'),
+    (19, 6, 30.80, '2024-05-17T13:00:00'),
+    (20, 7, 29.67, '2024-05-17T13:30:00'),
+    (21, 8, 23.21, '2024-05-17T14:00:00'),
+    (22, 9, 25.00, '2024-05-17T18:30:00'),
+    (23, 10, 31.50, '2024-05-17T19:00:00'),
+    (24, 1, 29.80, '2024-05-17T19:30:00'),
+    (25, 2, 28.67, '2024-05-17T20:00:00'),
+    (26, 3, 22.21, '2024-05-17T20:30:00'),
+    (27, 4, 24.00, '2024-05-17T19:00:00'),
+    (28, 5, 30.50, '2024-05-17T19:30:00'),
+    (29, 6, 28.80, '2024-05-17T20:00:00'),
+    (30, 7, 27.67, '2024-05-17T20:30:00'),
+    (31, 8, 21.21, '2024-05-17T21:00:00'),
+    (32, 4, 22.00, '2024-05-18T12:00:00'),
+    (33, 5, 28.50, '2024-05-18T12:30:00'),
+    (34, 6, 26.80, '2024-05-18T13:00:00'),
+    (35, 7, 25.67, '2024-05-18T13:30:00'),
+    (36, 8, 19.21, '2024-05-18T14:00:00'),
+    (37, 9, 27.00, '2024-05-18T18:30:00'),
+    (38, 10, 33.50, '2024-05-18T19:00:00'),
+    (39, 1, 31.80, '2024-05-18T19:30:00'),
+    (40, 2, 30.67, '2024-05-18T20:00:00'),
+    (41, 3, 24.21, '2024-05-18T20:30:00'),
+    (42, 4, 26.00, '2024-05-18T19:00:00'),
+    (43, 5, 32.50, '2024-05-18T19:30:00'),
+    (44, 6, 30.80, '2024-05-18T20:00:00'),
+    (45, 7, 29.67, '2024-05-18T20:30:00'),
+    (46, 8, 23.21, '2024-05-18T21:00:00'),
+    (47, 9, 25.00, '2024-05-18T18:00:00'),
+    (48, 10, 31.50, '2024-05-18T18:30:00'),
+    (49, 1, 29.80, '2024-05-18T19:00:00'),
+    (50, 2, 28.67, '2024-05-18T19:30:00'),
+    (51, 3, 22.21, '2024-05-18T20:00:00');
