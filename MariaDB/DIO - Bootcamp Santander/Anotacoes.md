@@ -79,7 +79,40 @@ Link: https://www.sqltutorial.org/
 - Chaves Estrangeiras   ()
 - Auto Incremento   (Incremento do valor, automático)
 
+*Operadores Select*
+- = (igualdade)
+- <> ou != (desigualdade)
+- > (maior que)
+- < (menor que)
+- >= (maior ou igual que)
+- <= (menor ou igual que)
+- LIKE (comparação de padrões)
+- IN (pertence a uma lista de valores)
+- BETWEEN (dentro de um intervalo)
+- AND (e lógico)
+- OR (ou lógico)
 
+*Normalização de Dados*
+- A normalização de dados é um processo no qual se organiza e estrutura um banco de dados relacional de forma a eliminar redundâncias e anomalias, garantindo a consistência e integridade dos dados.
+    - Atomicidade: Estabelece que cada valor da tabela deve ser indivisivel/ únicos, por exemplo, endereço é composto por rua e número.
+    - Todos os atributos não chave primárias, devem depender totalmente da chave primária.
+    - Nenhuma coluna não-chave deve depender de outra coluna nõa-chave.
+
+*Junções*
+- INNER JOIN: Retorna apenas as linhas que tem correspondencia em ambas tabelas envolvidas na junção.
+- LEFT JOIN: retorna como null os campos da esquerda quando a tabela apontada não tem referencia na outra
+- RIGHT JOIN: retorna como null os campos da direita quando a tabela apontada não tem referencia na outra
+- FULL JOIN:  retorna todos os campos, null para os vazios
+
+*Sub Consultas*
+- Elas permitem realizar consultas mais complexas permitindo que você use o resultado de uma consulta como entrada para outra consulta.
+
+*Funções Agregadoras*
+- COUNT: Conta o número de registros.
+- SUM: Soma os valores de uma coluna numérica.
+- AVG: Calcula a média dos valores de uma coluna numérica.
+- MIN: Retorna o valor mínimo de uma coluna.
+- MAX: Retorna o valor máximo de uma coluna.
 
 Link: https://app.quickdatabasediagrams.com/#/
 Link: https://clients.cloudclusters.io/
