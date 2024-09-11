@@ -1,11 +1,18 @@
 # .Estudos-em-Banco_de_Dados
 
-## Exercícios realizados no curso de Banco de Dados para Data Science do Senai Frederico Jacob 
+### Linguagem utilizada no curso de Banco de Dados para Data Science do Senai Frederico Jacob 
+*Linguagem Relacional (SQL)*
+- SQL Server
 
-## Estudos realizado no Bootcamp Santander 2024 - Backend com Java
-*Linguagem SQL*
-    - Maria DB
+### Linguagens utilizadas no Bootcamp Santander 2024 - Backend com Java
+*Linguagens Relacionais (SQL)*
+- Maria DB
+- SQL Server
 
-*Linguagens NoSQL*
-    - Neo4j
-    - Mongo
+*Linguagens não Relacionais (NoSQL)*
+- Neo4j
+- Mongo
+
+### Linguagem utilizada na disciplina de Banco de Dados da Fatec Zona Leste
+*Linguagem Relacional (SQL)*
+- SQL Server
