@@ -1,3 +1,6 @@
+----------------------------------------------------------------
+-- CRIANDO O BANCO DE DADOS
+----------------------------------------------------------------
 CREATE DATABASE empresa_projetos
 GO
 USE empresa_projetos
@@ -28,10 +31,10 @@ FOREIGN KEY(usuarioId) REFERENCES usuarios(id),
 FOREIGN KEY(projetosId) REFERENCES projetos(id)
 )
 
+
 ----------------------------------------------------------------
 -- ALTERANDO A TABELA
 ----------------------------------------------------------------
-
 ALTER TABLE usuarios
 DROP CONSTRAINT UQ__usuarios__F3DBC572D51916BE -- Lembrar de pegar a referencia correta da constraint
 
@@ -44,3 +47,11 @@ ADD CONSTRAINT chk_username UNIQUE (username)
 GO
 ALTER TABLE usuarios
 ALTER COLUMN passwd VARCHAR(8)
+
+
+----------------------------------------------------------------
+-- INSERINDO DADOS
+----------------------------------------------------------------
+
+
+
