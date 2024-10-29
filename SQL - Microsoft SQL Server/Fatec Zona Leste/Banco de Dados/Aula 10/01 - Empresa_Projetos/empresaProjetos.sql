@@ -52,6 +52,44 @@ ALTER COLUMN passwd VARCHAR(8)
 ----------------------------------------------------------------
 -- INSERINDO DADOS
 ----------------------------------------------------------------
+INSERT INTO usuarios (nome, username, passwd, email) VALUES  
+('Maria', 'Rh_maria', DEFAULT, 'maria@empresa.com'),
+('Paulo', 'Ti_paulo', '123@456', 'paulo@empresa.com'),
+('Ana', 'Rh_ana', DEFAULT, 'ana@empresa.com'),
+('Clara', 'Ti_clara', DEFAULT, 'clara@empresa.com'),
+('Aparecido', 'Rh_apareci', '55@!cido', 'aparecido@empresa.com') 
+GO
+INSERT INTO projetos (nome, descricao, dataProjeto) VALUES
+('Re-folha', 'Refatoração das Folhas', '2024/09/05'),
+('Manutenção PCs', 'Manutenção PCs', '2024/09/06'),
+('Auditoria', '', '2024/09/07') 
+GO
+INSERT INTO usuariosProjetos (usuarioId, projetosId) VALUES
+(1, 10002),
+(5, 10002),
+(3, 10004),
+(4, 10003),
+(2, 10003)
+-- precisei ajustar pq a inserção pulou o numero 10001
+SELECT * FROM usuarios
+SELECT * FROM projetos
+SELECT * FROM usuariosProjetos
 
 
-
+----------------------------------------------------------------
+-- ALTERANDO DADOS
+----------------------------------------------------------------
+UPDATE projetos
+SET dataProjeto = '2024/09/12'
+WHERE id = 10003
+GO 
+UPDATE usuarios
+SET username = 'Rh_cido'
+WHERE id = 5 AND nome = 'Aparecido'
+GO
+UPDATE usuarios
+SET passwd = '888@*'
+WHERE username = 'Rh_maria' and email = 'maria@empresa.com'
+GO
+DELETE usuariosProjetos
+WHERE usuarioId	= 2 AND projetosId = 10003
