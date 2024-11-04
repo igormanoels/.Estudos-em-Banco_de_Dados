@@ -81,10 +81,29 @@ WHERE usuarioId	= 2 AND projetoId = 10002
 -- A) Adicionar | User (6; Joao; Ti_joao; 123mudar; joao@empresa.com)
 INSERT INTO usuario (nome, nomeUsuario, senha, email) VALUES
 ('Joao', 'Ti_joao', DEFAULT, 'joao@empresa.com')
+
 -- B) Adicionar | Project  (10004; Atualização de Sistemas; Modificação de Sistemas Operacionais nos PC's; 12/09/2014)
 INSERT INTO projeto (nome, descricao, dataProjeto) VALUES
 ('Atualização de Sistemas', 'Modificação de Sistemas Operacionais nos PCs', '12/09/2014')
+
 -- C) Consultar | 1) Id, Name e Email de Users, Id, Name, Description e Data de Projects, dos usuários que participaram do projeto Name Re-folha
+SELECT usuario.id, usuario.nome, usuario.email, projeto.id, projeto.nome, projeto.descricao, projeto.dataProjeto
+FROM usuario 
+INNER JOIN usuarioProjeto ON usuario.id = usuarioProjeto.usuarioId
+INNER JOIN projeto ON usuarioProjeto.projetoId = projeto.id
+WHERE projeto.nome = 'Re-folha'
 
+-- C) Consultar | 2) Name dos Projects que não tem Users
+SELECT projeto.id, projeto.nome
+FROM projeto 
+LEFT JOIN usuarioProjeto ON projeto.id = usuarioProjeto.projetoId
+LEFT JOIN usuario ON usuarioProjeto.usuarioId = usuario.id
+WHERE usuarioProjeto.projetoId IS NULL
 
+-- C) Consultar | 3) Name dos Users que não tem Projects
+SELECT usuario.id, usuario.nome
+FROM usuario
+LEFT JOIN usuarioProjeto ON usuario.id = usuarioProjeto.usuarioId
+LEFT JOIN projeto ON projeto.id = usuarioProjeto.projetoId
+WHERE usuarioProjeto.usuarioId IS NULL
 
