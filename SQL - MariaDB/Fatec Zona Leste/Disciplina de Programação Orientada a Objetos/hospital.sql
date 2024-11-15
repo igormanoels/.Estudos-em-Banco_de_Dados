@@ -66,10 +66,6 @@ CREATE TABLE funcionario(
     senha VARCHAR(20) NOT NULL
 );
 
-
-
-
-
 CREATE TABLE medicamentos(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(40) NOT NULL,
