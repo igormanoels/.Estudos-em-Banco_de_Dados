@@ -1,87 +1,109 @@
 CREATE DATABASE hospital;
 
-USE hospital
+USE hospital;
 
-CREATE TABLE pessoa(
-    cpf VARCHAR(30) PRIMARY KEY,
+CREATE TABLE pessoa (
+    cpf VARCHAR(20) PRIMARY KEY,
     nome VARCHAR(40) NOT NULL,
     idade INT NOT NULL,
     email VARCHAR(40) NOT NULL,
-    telefone INT NOT NULL
-
+    telefone VARCHAR(15) NOT NULL
 );
 
-CREATE TABLE doador(
-    cpf VARCHAR(30) PRIMARY KEY,
-    tipoSangue CHAR(2) NOT NULL
-
+CREATE TABLE doador (
+    pessoaCpf VARCHAR(20) PRIMARY KEY,
+    tipoSangue CHAR(3) NOT NULL,
+    FOREIGN KEY (pessoaCpf) REFERENCES pessoa(cpf)
 );
 
-CREATE TABLE paciente(
-    cpf VARCHAR(30) PRIMARY KEY
+CREATE TABLE paciente (
+    pessoaCpf VARCHAR(20) PRIMARY KEY,
+    FOREIGN KEY (pessoaCpf) REFERENCES pessoa(cpf)
 );
 
-CREATE TABLE consulta(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(40) NOT NULL,
-    descricao VARCHAR(60)  
-    consultorio int NOT NULL,
-    dataConsulta DATA NOT NULL,
-    horario TIME
-);
-
-CREATE TABLE especialidade(
-    codigo INT PRIMARY KEY, -- Há uma tabela estabelecida pelo crm de 55 itens
-    nome VARCHAR(40) NOT NULL,
-    descricao VARCHAR(60)
-
-);
-
-CREATE TABLE doacao(
-    id INT AUTO_INCREMENT PRIMARY KEY
-
-);
-
-CREATE TABLE exames(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-
-);
-
-
-
-
-CREATE TABLE medico(
-    crm VARCHAR(30) PRIMARY KEY,
-    nome VARCHAR(60) NOT NULL,
-    email VARCHAR(40) NOT NULL UNIQUE,
-    telefone INT NOT NULL
-);
-
-CREATE TABLE funcionario(
+CREATE TABLE funcionario (
     registro INT PRIMARY KEY,
-    nome VARCHAR(60) NOT NULL,
+    nome VARCHAR(40) NOT NULL,
     email VARCHAR(40) NOT NULL UNIQUE,
-    telefone INT NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
     usuario VARCHAR(20) NOT NULL UNIQUE,
-    senha VARCHAR(20) NOT NULL
+    senha VARCHAR(20) DEFAULT '123HOSPITAL'
 );
 
-CREATE TABLE medicamentos(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE medico (
+    crm VARCHAR(20) PRIMARY KEY,
     nome VARCHAR(40) NOT NULL,
-    quantidade INT NOT NULL,
-    fornecedor VARCHAR(40) NOT NULL
-
+    email VARCHAR(40) NOT NULL UNIQUE,
+    telefone VARCHAR(15) NOT NULL
 );
 
-CREATE TABLE pedidos(
+CREATE TABLE agendamento (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    dataAgendamento DATE NOT NULL,
+    horario CHAR(5) NOT NULL,
+    sala INT NOT NULL,
+    pessoaCpf VARCHAR(20) NOT NULL,
+    funcionarioRegistro INT NOT NULL,
+    FOREIGN KEY (pessoaCpf) REFERENCES pessoa(cpf),
+    FOREIGN KEY (funcionarioRegistro) REFERENCES funcionario(registro)
+);
+
+CREATE TABLE doacao (
+    agendamentoId INT PRIMARY KEY,
+    FOREIGN KEY (agendamentoId) REFERENCES agendamento(id)
+);
+
+CREATE TABLE exames (
+    agendamentoId INT PRIMARY KEY,
     nome VARCHAR(40) NOT NULL,
+    descricao VARCHAR(200),
+    FOREIGN KEY (agendamentoId) REFERENCES agendamento(id)
+);
+
+CREATE TABLE consulta (
+    agendamentoId INT PRIMARY KEY,
+    especialidade VARCHAR(40) NOT NULL,
+    descricao VARCHAR(60),
+    medicoCrm VARCHAR(20) NOT NULL,
+    FOREIGN KEY (agendamentoId) REFERENCES agendamento(id),
+    FOREIGN KEY (medicoCrm) REFERENCES medico(crm)
+);
+
+CREATE TABLE estoque (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    medicamento VARCHAR(40) NOT NULL,
     quantidade INT NOT NULL,
     fornecedor VARCHAR(40) NOT NULL,
-    situacao varchar(20) DEFAULT 'pendente'
-
+    funcionarioRegistro INT NOT NULL,
+    FOREIGN KEY (funcionarioRegistro) REFERENCES funcionario(registro)
 );
 
+CREATE TABLE pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    situacao VARCHAR(20) DEFAULT 'pendente',
+    dataPedido DATE NOT NULL,
+    dataEntrega DATE NOT NULL
+);
 
+CREATE TABLE receita (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    dataReceita DATE NOT NULL,
+    medicoCrm VARCHAR(20) NOT NULL,
+    FOREIGN KEY (medicoCrm) REFERENCES medico(crm)
+);
 
+CREATE TABLE estoquePedido (
+    estoqueId INT NOT NULL,
+    pedidoId INT NOT NULL,
+    PRIMARY KEY (estoqueId, pedidoId),
+    FOREIGN KEY (estoqueId) REFERENCES estoque(id),
+    FOREIGN KEY (pedidoId) REFERENCES pedido(id)
+);
+
+CREATE TABLE receitaEstoque (
+    estoqueId INT NOT NULL,
+    receitaId INT NOT NULL,
+    PRIMARY KEY (estoqueId, receitaId),
+    FOREIGN KEY (estoqueId) REFERENCES estoque(id),
+    FOREIGN KEY (receitaId) REFERENCES receita(id)
+);
