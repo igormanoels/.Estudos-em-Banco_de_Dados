@@ -37,6 +37,11 @@ CREATE TABLE medico (
     telefone VARCHAR(15) NOT NULL
 );
 
+CREATE TABLE especialidade (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    especialidade VARCHAR(40) NOT NULL
+);
+
 CREATE TABLE agendamento (
     id INT AUTO_INCREMENT PRIMARY KEY,
     dataAgendamento DATE NOT NULL,
@@ -62,11 +67,12 @@ CREATE TABLE exames (
 
 CREATE TABLE consulta (
     agendamentoId INT PRIMARY KEY,
-    especialidade VARCHAR(40) NOT NULL,
     descricao VARCHAR(60),
     medicoCrm VARCHAR(20) NOT NULL,
+    especialidadeId INT NOT NULL,
     FOREIGN KEY (agendamentoId) REFERENCES agendamento(id),
-    FOREIGN KEY (medicoCrm) REFERENCES medico(crm)
+    FOREIGN KEY (medicoCrm) REFERENCES medico(crm),
+    FOREIGN KEY (especialidadeId) REFERENCES especialidade(id)
 );
 
 CREATE TABLE estoque (
@@ -107,3 +113,8 @@ CREATE TABLE receitaEstoque (
     FOREIGN KEY (estoqueId) REFERENCES estoque(id),
     FOREIGN KEY (receitaId) REFERENCES receita(id)
 );
+
+
+CREATE USER 'pooUser'@'%' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON hospital.* TO 'pooUser'@'%';
+FLUSH PRIVILEGES;
