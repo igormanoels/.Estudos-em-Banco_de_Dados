@@ -18,6 +18,10 @@ SELECT * FROM Clientes
 DROP TABLE Clientes
 
 
+INSERT INTO Clientes (Nome, Sobrenome, Email, AceitaComunicados, DataCadastro) VALUES 
+('Andre', 'Silva', 'email@email.com', 0, '2009-01-07 00:00:00.0000000'),
+('Andre', 'Santos', 'email@email.com', 1, '2008-01-24 00:00:00.0000000')
+
 -- Inserção de dados
 INSERT INTO Clientes (Nome, Sobrenome, Email, AceitaComunicados, DataCadastro) VALUES 
 ('Ken', 'Sánchez', 'email@email.com', 0, '2009-01-07 00:00:00.0000000'),

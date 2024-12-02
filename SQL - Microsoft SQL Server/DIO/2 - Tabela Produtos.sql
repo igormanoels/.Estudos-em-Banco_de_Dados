@@ -1,5 +1,7 @@
-DROP TABLE IF EXISTS dbo.Produtos
-
+CREATE DATABASE dioProdutos
+GO
+USE dioProdutos
+GO
 CREATE TABLE Produtos (
 	Id int IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	Nome varchar(255) NOT NULL,
@@ -8,7 +10,7 @@ CREATE TABLE Produtos (
 	Tamanho varchar(5) NULL,
 	Genero char(1) NULL
 )
-
+GO
 INSERT INTO Produtos VALUES ('Mountain Bike Socks, M','Branco','9.50','M','U')
 INSERT INTO Produtos VALUES ('Mountain Bike Socks, L','Branco','9.50','G','U')
 INSERT INTO Produtos VALUES ('AWC Logo Cap','Colorido','8.99','','U')
@@ -44,3 +46,12 @@ INSERT INTO Produtos VALUES ('Short-Sleeve Classic Jersey, S','Amarelo','53.99',
 INSERT INTO Produtos VALUES ('Short-Sleeve Classic Jersey, M','Amarelo','53.99','M','U')
 INSERT INTO Produtos VALUES ('Short-Sleeve Classic Jersey, L','Amarelo','53.99','G','U')
 INSERT INTO Produtos VALUES ('Short-Sleeve Classic Jersey, XL','Amarelo','53.99','GG','U')
+
+
+SELECT * FROM Produtos
+-- DROP TABLE Produtos
+
+
+
+
+
