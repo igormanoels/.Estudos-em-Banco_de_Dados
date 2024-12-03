@@ -76,6 +76,53 @@ DELETE Clientes
 WHERE Id = 1
 
 
+BEGIN TRAN
+DELETE Clientes
+SELECT * FROM Clientes
 
+ROLLBACK
+
+
+
+-- Relacionando tabelas
+USE dioClientes
+GO
+CREATE TABLE Enderecos (
+    Id INT IDENTITY(1,1),
+    IdCliente INT NOT NULL,
+	Rua VARCHAR(255) NULL,
+    Bairro VARCHAR(255) NULL,
+    Cidade VARCHAR(255) NULL,
+    Estado VARCHAR(255) NULL,
+	PRIMARY KEY (Id),
+	FOREIGN KEY (IdCliente) REFERENCES Clientes(Id)
+);
+
+
+SELECT * FROM Clientes
+SELECT * FROM Enderecos
+
+
+INSERT INTO Enderecos (IdCliente, Rua, Bairro, Cidade, Estado) 
+VALUES (2, 'Primeira Rua', 'Algum Lugar', 'Alguma Cidade', 'Algum Estado')
+
+
+-- Primeiro Select das tabelas
+SELECT * FROM Clientes
+WHERE Id = 2
+
+SELECT * FROM Enderecos
+WHERE Id = 2
+
+
+-- Usando o JOIN
+SELECT 
+	Nome, Sobrenome, Email, Rua, Estado
+FROM 
+	Clientes INNER JOIN Enderecos -- Junção de tabelas
+ON 
+	Clientes.Id = Enderecos.IdCliente
+WHERE 
+	Clientes.Id = 2
 
 
