@@ -1,6 +1,6 @@
-CREATE DATABASE exercicio01Escola
+CREATE DATABASE fatecExercicioEscola
 GO
-USE exercicio01Escola
+USE fatecExercicioEscola
 GO
 CREATE TABLE aluno(
 	ra INT,

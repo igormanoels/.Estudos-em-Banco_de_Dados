@@ -108,7 +108,7 @@ FROM produto
 INNER JOIN pedido ON produto.codigo = pedido.cod_prod
 INNER JOIN cliente ON pedido.cod_cli = cliente.codigo
 WHERE cliente.nome  = 'Maria Clara' 
-	
+
 
 --14. Considerando que o pedido de Maria Clara foi entregue 15/03/2023, 
 -- consultar quantos dias houve de atraso. A cláusula do WHERE deve ser o nome da cliente.
@@ -120,6 +120,7 @@ WHERE
 	cliente.nome =  'Maria Clara'
 
 
+-- 15. Consultar qual a nova data de entrega para o pedido de Alberto% sabendo que se pediu 9 dias a mais. A cláusula do WHERE deve ser o nome do cliente. A data deve ser exibida no formato dd/mm/aaaa.
 SELECT 
 	CONVERT(VARCHAR, DATEADD(DAY, 9, pedido.previsao_ent), 103) AS 'nova data de entrega'
 FROM 
