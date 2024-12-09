@@ -1,3 +1,5 @@
+-- MÓDULO 2
+
 USE dioProdutos
 
 SELECT * FROM Produtos
