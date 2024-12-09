@@ -31,6 +31,9 @@ CREATE TABLE prontuario (
 	FOREIGN KEY(codigoMedico) REFERENCES medico(codigo)
 )
 
+
+------------------------------------------------------------------------------------------------------------------------------------
+-- INSERINDO DADOS
 INSERT INTO paciente (cpf, nome, rua, numero, bairro, telefone, dataNascimento) VALUES
 	('35454562890', 'José Rubens', 'Campos Salles', 2750,	'Centro', 21450998,	'1954-10-18'),
 	('29865439810', 'Ana Claudia', 'Sete de Setembro', 178, 'Centro',	97382764, '1960-05-29'),
@@ -54,8 +57,8 @@ INSERT INTO prontuario (dataConsulta, cpfPaciente, codigoMedico, diagnostico, me
 	('2020-09-15', '12386758770', 3, 'Braço Quebrado', 'Dorflex + Gesso')
 
 
----------------------------------------------------------------------------------------------------------------------------------------------------
--- Consultar:
+------------------------------------------------------------------------------------------------------------------------------------
+-- SELECIONANDO DADOS
 -- Nome e Endereço (concatenado) dos pacientes com mais de 50 anos
 SELECT 
 	nome, (rua + ', ' + CAST(numero AS VARCHAR) + ' - ' + bairro) AS endereco
@@ -155,4 +158,5 @@ SET
 	bairro = 'Jd. Aeroporto'
 WHERE
 	nome = 'Joana de Souza'
+
 
