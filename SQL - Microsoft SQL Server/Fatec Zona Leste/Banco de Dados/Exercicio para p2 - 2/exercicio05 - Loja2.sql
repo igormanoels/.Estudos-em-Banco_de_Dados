@@ -129,8 +129,7 @@ WHERE
 									
 --Consultar quantos clientes tem mais de 40 anos.
 SELECT
-	cliente.nome,
-	DATEDIFF(YEAR, cliente.dataNascimento, GETDATE()) AS idade
+	COUNT(cliente.nome) as 'qtd acima de 40'
 FROM 
 	cliente
 WHERE
