@@ -172,15 +172,50 @@ GROUP BY
 
 --Consultar nome e desconto de 25% no preço dos produtos que custam menos de R$50,00
 SELECT
+	produto.nome,
+	'R$ ' + FORMAT((produto.valorUnitario * 0.75), '###,###.##') AS 'valor com desconto' 
+FROM
+	produto
+WHERE
+	valorUnitario < 50
+
 										
---Consultar nome e aumento de 10% no preço dos produtos que custam mais de R$100,00										
---Consultar desconto de 15% no valor total de cada produto da venda 99001.										
+--Consultar nome e aumento de 10% no preço dos produtos que custam mais de R$100,00
+SELECT
+	produto.nome,
+	'R$ ' + FORMAT((produto.valorUnitario * 1.1), '###,###.##') AS 'valor com aumento' 
+FROM
+	produto
+WHERE
+	valorUnitario > 100
+
+-- outra forma
+SELECT
+    produto.nome,
+    'R$ ' + STR((produto.valorUnitario * 1.1), 10, 2) AS 'valor com aumento'
+FROM
+    produto
+WHERE
+    valorUnitario > 100
+
+										
+--Consultar desconto de 15% no valor total de cada produto da venda 99001.
+SELECT
+	produto.nome, 
+	'R$ ' + FORMAT((produto.valorUnitario * 0.85), '###,###.##') AS 'valor com desconto' 
+FROM
+	produto INNER JOIN pedido ON pedido.codigoProduto = produto.codigo
+WHERE
+	pedido.codigo = 99001
+								
+									
 --Consultar Código do pedido, nome do cliente e idade atual do cliente										
-
-
-
-
-
+SELECT
+	pedido.codigo,
+	cliente.nome,
+	DATEDIFF(YEAR, cliente.dataNascimento, GETDATE()) AS 'idade'
+FROM
+	pedido INNER JOIN cliente ON cliente.codigo = pedido.codigoCliente
 
 
 
